@@ -3,7 +3,6 @@ import numpy as np
 import imutils
 import cv2
 from numpy import ndarray
-from numpy.ma.core import array
 
 use_gpu = True
 live_video = True
@@ -14,12 +13,10 @@ CLASSES = ["background", "aeroplane", "bicycle", "bird", "boat", "bottle", "bus"
            "car", "cat", "chair", "cow", "dining table", "dog", "horse",
            "motorbike", "person", "potted plant", "sheep", "sofa", "train", "tv-monitor"]
 
-
 id_xternal = int()
 
 startX, startY = None, None
 endX, endY = None, None
-
 
 COLORS = np.random.uniform(0, 255, size=(len(CLASSES), 3))
 
@@ -39,11 +36,12 @@ else:
 
 while ret:
     ret, frame = vs.read()
+
     if ret:
         frame = imutils.resize(frame, width=480)
         (h, w) = frame.shape[:2]
 
-        blob = cv2.dnn.blobFromImage(frame, 0.007843, (640, 480), 127.5)
+        blob = cv2.dnn.blobFromImage(frame,0.007843, (640, 480), 127.5)
         net.setInput(blob)
         detections = net.forward()
 
