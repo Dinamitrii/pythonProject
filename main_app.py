@@ -18,8 +18,8 @@ net = cv2.dnn.readNetFromCaffe("ssd_files/MobileNetSSD_deploy.prototxt", "ssd_fi
 
 if use_gpu:
     print("[INFO] setting preferable backend to OpenCV and preferable target to OpenCL...")
-    net.setPreferableBackend(cv2.dnn.DNN_BACKEND_VKCOM)
-    net.setPreferableTarget(cv2.dnn.DNN_TARGET_VULKAN)
+    net.setPreferableBackend(cv2.dnn.DNN_BACKEND_OPENCV)
+    net.setPreferableTarget(cv2.dnn.DNN_TARGET_OPENCL_FP16)
 
 print("[INFO] accessing video stream...")
 
