@@ -12,7 +12,12 @@ CLASSES = ["background", "aeroplane", "bicycle", "bird", "boat", "bottle", "bus"
            "car", "cat", "chair", "cow", "dining table", "dog", "horse",
            "motorbike", "person", "potted plant", "sheep", "sofa", "train", "tv-monitor"]
 
+
 id_xternal = int()
+
+startX, startY = None, None
+endX, endY = None, None
+
 
 COLORS = np.random.uniform(0, 255, size=(len(CLASSES), 3))
 
@@ -20,8 +25,8 @@ net = cv2.dnn.readNetFromCaffe("ssd_files/MobileNetSSD_deploy.prototxt", "ssd_fi
 
 if use_gpu:
     print("[INFO] setting preferable backend to OpenCV and preferable target to OpenCL...")
-    net.setPreferableBackend(cv2.dnn.DNN_BACKEND_VKCOM)
-    net.setPreferableTarget(cv2.dnn.DNN_TARGET_VULKAN)
+    net.setPreferableBackend(cv2.dnn.DNN_BACKEND_OPENCV)
+    net.setPreferableTarget(cv2.dnn.DNN_TARGET_CPU)
 
 print("[INFO] accessing video stream...")
 
