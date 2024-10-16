@@ -2,6 +2,8 @@ from imutils.video import FPS
 import numpy as np
 import imutils
 import cv2
+from numpy import ndarray
+from numpy.ma.core import array
 
 use_gpu = True
 live_video = True
