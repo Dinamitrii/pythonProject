@@ -15,17 +15,17 @@ CLASSES = ["background", "aeroplane", "bicycle", "bird", "boat", "bottle", "bus"
 
 id_xternal = int()
 
-startX, startY = None, None
+startX, startY = None, float()
 endX, endY = None, None
 
 COLORS = np.random.uniform(0, 255, size=(len(CLASSES), 3))
 
-net = cv2.dnn.readNetFromCaffe("ssd_files/MobileNetSSD_deploy.prototxt", "ssd_files/MobileNetSSD_deploy.caffemodel")
+net = cv2.dnn.readNetFromCaffe("data/ssd_files/MobileNetSSD_deploy.prototxt", "data/ssd_files/MobileNetSSD_deploy.caffemodel")
 
 if use_gpu:
     print("[INFO] setting preferable backend to OpenCV and preferable target to OpenCL...")
-    net.setPreferableBackend(cv2.dnn.DNN_BACKEND_OPENCV)
-    net.setPreferableTarget(cv2.dnn.DNN_TARGET_OPENCL)
+    net.setPreferableBackend(cv2.dnn.DNN_BACKEND_VKCOM)
+    net.setPreferableTarget(cv2.dnn.DNN_TARGET_VULKAN)
 
 print("[INFO] accessing video stream...")
 
@@ -67,5 +67,5 @@ while ret:
 
 fps.stop()
 
-print("[INFO] elapsed time: {:.2f}".format(fps.elapsed()))
-print("[INFO] approx. FPS: {:.2f}".format(fps.fps()))
+print(f"[INFO] elapsed time: {fps.elapsed():.2f}")
+print(f"[INFO] approx. FPS: {fps.fps():.2f}")
